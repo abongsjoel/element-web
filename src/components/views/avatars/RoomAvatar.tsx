@@ -34,10 +34,19 @@ interface IProps extends Omit<ComponentProps<typeof BaseAvatar>, "name" | "idNam
     };
     viewAvatarOnClick?: boolean;
     onClick?(): void;
+    username?: string;
 }
 
-const RoomAvatar: React.FC<IProps> = ({ room, viewAvatarOnClick, onClick, oobData, size = "36px", ...otherProps }) => {
-    const roomName = room?.name ?? oobData?.name ?? "?";
+const RoomAvatar: React.FC<IProps> = ({
+    room,
+    viewAvatarOnClick,
+    onClick,
+    oobData,
+    size = "36px",
+    username,
+    ...otherProps
+}) => {
+    const roomName = username ?? room?.name ?? oobData?.name ?? "?";
     const avatarEvent = useRoomState(room, (state) => state.getStateEvents(EventType.RoomAvatar, ""));
     const roomIdName = useRoomIdName(room, oobData);
 

@@ -20,7 +20,7 @@ import PublicIcon from "@vector-im/compound-design-tokens/assets/web/icons/publi
 import { JoinRule, type Room } from "matrix-js-sdk/src/matrix";
 import { type ViewRoomOpts } from "@matrix-org/react-sdk-module-api/lib/lifecycles/RoomViewLifecycle";
 
-import { useRoomName } from "../../../../hooks/useRoomName.ts";
+// import { useRoomName } from "../../../../hooks/useRoomName.ts";
 import { RightPanelPhases } from "../../../../stores/right-panel/RightPanelStorePhases.ts";
 import { useMatrixClientContext } from "../../../../contexts/MatrixClientContext.tsx";
 import { useRoomMemberCount, useRoomMembers } from "../../../../hooks/useRoomMembers.ts";
@@ -49,8 +49,8 @@ import { type ButtonEvent } from "../../elements/AccessibleButton.tsx";
 import WithPresenceIndicator, { useDmMember } from "../../avatars/WithPresenceIndicator.tsx";
 import { type IOOBData } from "../../../../stores/ThreepidInviteStore.ts";
 import { MainSplitContentType } from "../../../structures/RoomView.tsx";
-import defaultDispatcher from "../../../../dispatcher/dispatcher.ts";
-import { RoomSettingsTab } from "../../dialogs/RoomSettingsDialog.tsx";
+// import defaultDispatcher from "../../../../dispatcher/dispatcher.ts";
+// import { RoomSettingsTab } from "../../dialogs/RoomSettingsDialog.tsx";
 import { useScopedRoomContext } from "../../../../contexts/ScopedRoomContext.tsx";
 import { ToggleableIcon } from "./toggle/ToggleableIcon.tsx";
 import { CurrentRightPanelPhaseContextProvider } from "../../../../contexts/CurrentRightPanelPhaseContext.tsx";
@@ -67,7 +67,12 @@ export default function RoomHeader({
 }): JSX.Element {
     const client = useMatrixClientContext();
 
-    const roomName = useRoomName(room);
+    // Get current user information - available for use throughout the component
+    const currentUserId = client.getUserId();
+    const currentUser = currentUserId ? client.getUser(currentUserId) : null;
+    const username = currentUser?.displayName || currentUser?.rawDisplayName;
+
+    // const roomName = useRoomName(room);
     const joinRule = useRoomState(room, (state) => state.getJoinRule());
 
     const members = useRoomMembers(room, 2500);
@@ -243,12 +248,12 @@ export default function RoomHeader({
         roomContext.mainSplitContentType === MainSplitContentType.MaximisedWidget ||
         roomContext.mainSplitContentType === MainSplitContentType.Call;
 
-    const onAvatarClick = (): void => {
-        defaultDispatcher.dispatch({
-            action: "open_room_settings",
-            initial_tab_id: RoomSettingsTab.General,
-        });
-    };
+    // const onAvatarClick = (): void => {
+    //     defaultDispatcher.dispatch({
+    //         action: "open_room_settings",
+    //         initial_tab_id: RoomSettingsTab.General,
+    //     });
+    // };
 
     return (
         <>
@@ -260,7 +265,8 @@ export default function RoomHeader({
                             room={room}
                             size="40px"
                             oobData={oobData}
-                            onClick={onAvatarClick}
+                            username={username}
+                            // onClick={onAvatarClick}
                             tabIndex={-1}
                             aria-label={_t("room|header_avatar_open_settings_label")}
                         />
@@ -281,7 +287,7 @@ export default function RoomHeader({
                                 aria-level={1}
                                 className="mx_RoomHeader_heading"
                             >
-                                <span className="mx_RoomHeader_truncated mx_lineClamp">{roomName}</span>
+                                <span className="mx_RoomHeader_truncated mx_lineClamp">{username}</span>
 
                                 {!isDirectMessage && joinRule === JoinRule.Public && (
                                     <Tooltip label={_t("common|public_room")} placement="right">
