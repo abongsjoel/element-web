@@ -14,9 +14,9 @@ import DialPadIcon from "@vector-im/compound-design-tokens/assets/web/icons/dial
 import { IS_MAC, Key } from "../../../../Keyboard";
 import { _t } from "../../../../languageHandler";
 import { ALTERNATE_KEY_NAME } from "../../../../accessibility/KeyboardShortcuts";
-import { shouldShowComponent } from "../../../../customisations/helpers/UIComponents";
-import { UIComponent } from "../../../../settings/UIFeature";
-import { MetaSpace } from "../../../../stores/spaces";
+// import { shouldShowComponent } from "../../../../customisations/helpers/UIComponents";
+// import { UIComponent } from "../../../../settings/UIFeature";
+// import { MetaSpace } from "../../../../stores/spaces";
 import { Action } from "../../../../dispatcher/actions";
 // import PosthogTrackers from "../../../../PosthogTrackers";
 import defaultDispatcher from "../../../../dispatcher/dispatcher";
