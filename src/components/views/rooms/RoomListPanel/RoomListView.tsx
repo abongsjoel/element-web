@@ -10,9 +10,9 @@ import React, { type JSX } from "react";
 import { useRoomListViewModel } from "../../../viewmodels/roomlist/RoomListViewModel";
 import { RoomList } from "./RoomList";
 import { EmptyRoomList } from "./EmptyRoomList";
-import { RoomListPrimaryFilters } from "./RoomListPrimaryFilters";
-import { _t } from "../../../../languageHandler";
-import { ReleaseAnnouncement } from "../../../structures/ReleaseAnnouncement";
+// import { RoomListPrimaryFilters } from "./RoomListPrimaryFilters";
+// import { _t } from "../../../../languageHandler";
+// import { ReleaseAnnouncement } from "../../../structures/ReleaseAnnouncement";
 
 /**
  * Host the room list and the (future) room filters
@@ -30,7 +30,7 @@ export function RoomListView(): JSX.Element {
     }
     return (
         <>
-            <ReleaseAnnouncement
+            {/* <ReleaseAnnouncement
                 feature="newRoomList_filter"
                 header={_t("room_list|release_announcement|filter|title")}
                 description={_t("room_list|release_announcement|filter|description")}
@@ -40,7 +40,7 @@ export function RoomListView(): JSX.Element {
                 <div>
                     <RoomListPrimaryFilters vm={vm} />
                 </div>
-            </ReleaseAnnouncement>
+            </ReleaseAnnouncement> */}
             {listBody}
         </>
     );

@@ -15,6 +15,8 @@ import { RoomListItemMenuView } from "./RoomListItemMenuView";
 import { NotificationDecoration } from "../NotificationDecoration";
 import { RoomAvatarView } from "../../avatars/RoomAvatarView";
 import { RoomListItemContextMenuView } from "./RoomListItemContextMenuView";
+import { useMatrixClientContext } from "../../../../contexts/MatrixClientContext";
+import { useRoomMembers } from "../../../../hooks/useRoomMembers";
 
 interface RoomListItemViewProps extends React.HTMLAttributes<HTMLButtonElement> {
     /**
@@ -69,6 +71,12 @@ export const RoomListItemView = memo(function RoomListItemView({
     const showHoverDecoration = isMenuOpen || isFocused || isHover;
     const showHoverMenu = showHoverDecoration && vm.showHoverMenu;
 
+    const client = useMatrixClientContext();
+    const currentUserId = client.getUserId();
+    const members = useRoomMembers(room, 2500);
+    const correspondent = members.find((m) => m.userId !== currentUserId);
+    const correspondentName = correspondent?.name || correspondent?.rawDisplayName;
+
     const closeMenu = useCallback(() => {
         // To avoid icon blinking when closing the menu, we delay the state update
         // Also, let the focus move to the menu trigger before closing the menu
@@ -107,7 +115,7 @@ export const RoomListItemView = memo(function RoomListItemView({
             tabIndex={isFocused ? 0 : -1}
             {...props}
         >
-            <RoomAvatarView room={room} />
+            <RoomAvatarView room={room} username={correspondentName} />
             <Flex
                 className="mx_RoomListItemView_content"
                 gap="var(--cpd-space-2x)"
@@ -116,9 +124,12 @@ export const RoomListItemView = memo(function RoomListItemView({
             >
                 {/* We truncate the room name when too long. Title here is to show the full name on hover */}
                 <div className="mx_RoomListItemView_text">
-                    <div className="mx_RoomListItemView_roomName" title={vm.name}>
-                        {vm.name}
+                    <div className="mx_RoomListItemView_roomName" title={correspondentName}>
+                        {correspondentName}
                     </div>
+                    {/* <div className="mx_RoomListItemView_roomName" title={vm.name}>
+                        {vm.name}
+                    </div> */}
                     {vm.messagePreview && (
                         <div className="mx_RoomListItemView_messagePreview" title={vm.messagePreview}>
                             {vm.messagePreview}

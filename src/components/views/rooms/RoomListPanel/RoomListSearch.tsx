@@ -7,18 +7,18 @@
 
 import React, { type JSX } from "react";
 import { Button } from "@vector-im/compound-web";
-import ExploreIcon from "@vector-im/compound-design-tokens/assets/web/icons/explore";
+// import ExploreIcon from "@vector-im/compound-design-tokens/assets/web/icons/explore";
 import SearchIcon from "@vector-im/compound-design-tokens/assets/web/icons/search";
 import DialPadIcon from "@vector-im/compound-design-tokens/assets/web/icons/dial-pad";
 
 import { IS_MAC, Key } from "../../../../Keyboard";
 import { _t } from "../../../../languageHandler";
 import { ALTERNATE_KEY_NAME } from "../../../../accessibility/KeyboardShortcuts";
-import { shouldShowComponent } from "../../../../customisations/helpers/UIComponents";
-import { UIComponent } from "../../../../settings/UIFeature";
-import { MetaSpace } from "../../../../stores/spaces";
+// import { shouldShowComponent } from "../../../../customisations/helpers/UIComponents";
+// import { UIComponent } from "../../../../settings/UIFeature";
+// import { MetaSpace } from "../../../../stores/spaces";
 import { Action } from "../../../../dispatcher/actions";
-import PosthogTrackers from "../../../../PosthogTrackers";
+// import PosthogTrackers from "../../../../PosthogTrackers";
 import defaultDispatcher from "../../../../dispatcher/dispatcher";
 import { Flex } from "../../../../../packages/shared-components/src/utils/Flex";
 import { useTypedEventEmitterState } from "../../../../hooks/useEventEmitter";
@@ -37,7 +37,7 @@ type RoomListSearchProps = {
  * The `Explore` button is displayed only in the Home meta space and when UIComponent.ExploreRooms is enabled.
  */
 export function RoomListSearch({ activeSpace }: RoomListSearchProps): JSX.Element {
-    const displayExploreButton = activeSpace === MetaSpace.Home && shouldShowComponent(UIComponent.ExploreRooms);
+    // const displayExploreButton = activeSpace === MetaSpace.Home && shouldShowComponent(UIComponent.ExploreRooms);
     // We only display the dial button if the user is can make PSTN calls
     const displayDialButton = useTypedEventEmitterState(
         LegacyCallHandler.instance,
@@ -71,7 +71,7 @@ export function RoomListSearch({ activeSpace }: RoomListSearchProps): JSX.Elemen
                     }}
                 />
             )}
-            {displayExploreButton && (
+            {/* {displayExploreButton && (
                 <Button
                     kind="secondary"
                     size="sm"
@@ -83,7 +83,7 @@ export function RoomListSearch({ activeSpace }: RoomListSearchProps): JSX.Elemen
                         PosthogTrackers.trackInteraction("WebLeftPanelExploreRoomsButton", ev);
                     }}
                 />
-            )}
+            )} */}
         </Flex>
     );
 }

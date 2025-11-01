@@ -64,7 +64,7 @@ import { KeyBindingAction } from "../../../accessibility/KeyboardShortcuts";
 import { getKeyBindingsManager } from "../../../KeyBindingsManager";
 import { shouldShowComponent } from "../../../customisations/helpers/UIComponents";
 import { UIComponent } from "../../../settings/UIFeature";
-import { ThreadsActivityCentre } from "./threads-activity-centre/";
+// import { ThreadsActivityCentre } from "./threads-activity-centre/";
 import AccessibleButton from "../elements/AccessibleButton";
 import { Landmark, LandmarkNavigation } from "../../../accessibility/LandmarkNavigation";
 import { KeyboardShortcut } from "../settings/KeyboardShortcut";
@@ -224,6 +224,7 @@ const CreateSpaceButton: React.FC<Pick<IInnerSpacePanelProps, "isPanelCollapsed"
     setPanelCollapsed,
 }) => {
     const [menuDisplayed, handle, openMenu, closeMenu] = useContextMenu<HTMLDivElement>();
+    // const [menuDisplayed, handle, openMenu, closeMenu] = useContextMenu<HTMLDivElement>();
 
     useEffect(() => {
         if (!isPanelCollapsed && menuDisplayed) {
@@ -236,12 +237,12 @@ const CreateSpaceButton: React.FC<Pick<IInnerSpacePanelProps, "isPanelCollapsed"
         contextMenu = <SpaceCreateMenu onFinished={closeMenu} />;
     }
 
-    const onNewClick = menuDisplayed
-        ? closeMenu
-        : () => {
-              if (!isPanelCollapsed) setPanelCollapsed(true);
-              openMenu();
-          };
+    // const onNewClick = menuDisplayed
+    //     ? closeMenu
+    //     : () => {
+    //           if (!isPanelCollapsed) setPanelCollapsed(true);
+    //           openMenu();
+    //       };
 
     return (
         <li
@@ -251,7 +252,7 @@ const CreateSpaceButton: React.FC<Pick<IInnerSpacePanelProps, "isPanelCollapsed"
             role="treeitem"
             aria-selected={false}
         >
-            <SpaceButton
+            {/* <SpaceButton
                 data-testid="create-space-button"
                 className={classNames("mx_SpaceButton_new", {
                     mx_SpaceButton_newCancel: menuDisplayed,
@@ -261,7 +262,7 @@ const CreateSpaceButton: React.FC<Pick<IInnerSpacePanelProps, "isPanelCollapsed"
                 isNarrow={isPanelCollapsed}
                 innerRef={handle}
                 size="32px"
-            />
+            /> */}
 
             {contextMenu}
         </li>
@@ -441,7 +442,7 @@ const SpacePanel: React.FC = () => {
                                 )}
                             </Droppable>
 
-                            <ThreadsActivityCentre displayButtonLabel={!isPanelCollapsed} />
+                            {/* <ThreadsActivityCentre displayButtonLabel={!isPanelCollapsed} /> */}
 
                             <QuickSettingsButton isPanelCollapsed={isPanelCollapsed} />
                         </nav>

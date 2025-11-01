@@ -26,16 +26,18 @@ interface RoomAvatarViewProps {
      * The room to display the avatar for.
      */
     room: Room;
+    username?: string;
 }
 
 /**
  * Component to display the avatar of a room.
  * Currently only 32px size is supported.
  */
-export function RoomAvatarView({ room }: RoomAvatarViewProps): JSX.Element {
+export function RoomAvatarView({ room, username }: RoomAvatarViewProps): JSX.Element {
     const vm = useRoomAvatarViewModel(room);
     // No decoration, we just show the avatar
-    if (!vm.badgeDecoration) return <RoomAvatar size="32px" room={room} />;
+
+    if (!vm.badgeDecoration) return <RoomAvatar size="32px" room={room} username={username} />;
 
     const icon = getAvatarDecoration(vm.badgeDecoration, vm.presence);
     const label = getDecorationLabel(vm.badgeDecoration, vm.presence);
@@ -49,7 +51,12 @@ export function RoomAvatarView({ room }: RoomAvatarViewProps): JSX.Element {
 
     return (
         <div className="mx_RoomAvatarView">
-            <RoomAvatar className={classNames("mx_RoomAvatarView_RoomAvatar", maskClass)} size="32px" room={room} />
+            <RoomAvatar
+                className={classNames("mx_RoomAvatarView_RoomAvatar", maskClass)}
+                size="32px"
+                room={room}
+                username={username}
+            />
             {label ? <Tooltip label={label}>{icon}</Tooltip> : icon}
         </div>
     );

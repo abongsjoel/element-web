@@ -39,6 +39,17 @@ Please see LICENSE files in the repository root for full details.
     }
 }
 
+/* Apply background color only in light theme */
+.cpd-theme-light .mx_RoomView .mx_MessageComposer {
+    background: #e7e3e1;
+
+    .mx_BasicMessageComposer .mx_BasicMessageComposer_input {
+        background: white;
+        padding: 6px;
+        border-radius: 6px;
+    }
+}
+
 .mx_RoomView_auxPanel_hiddenHighlights {
     border-bottom: 1px solid $primary-hairline-color;
     padding: 10px 26px;
