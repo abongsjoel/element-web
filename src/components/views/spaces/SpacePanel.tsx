@@ -64,7 +64,7 @@ import { KeyBindingAction } from "../../../accessibility/KeyboardShortcuts";
 import { getKeyBindingsManager } from "../../../KeyBindingsManager";
 import { shouldShowComponent } from "../../../customisations/helpers/UIComponents";
 import { UIComponent } from "../../../settings/UIFeature";
-import { ThreadsActivityCentre } from "./threads-activity-centre/";
+// import { ThreadsActivityCentre } from "./threads-activity-centre/";
 import AccessibleButton from "../elements/AccessibleButton";
 import { Landmark, LandmarkNavigation } from "../../../accessibility/LandmarkNavigation";
 import { KeyboardShortcut } from "../settings/KeyboardShortcut";
@@ -442,7 +442,7 @@ const SpacePanel: React.FC = () => {
                                 )}
                             </Droppable>
 
-                            <ThreadsActivityCentre displayButtonLabel={!isPanelCollapsed} />
+                            {/* <ThreadsActivityCentre displayButtonLabel={!isPanelCollapsed} /> */}
 
                             <QuickSettingsButton isPanelCollapsed={isPanelCollapsed} />
                         </nav>
