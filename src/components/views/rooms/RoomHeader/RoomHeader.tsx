@@ -23,7 +23,7 @@ import { type ViewRoomOpts } from "@matrix-org/react-sdk-module-api/lib/lifecycl
 // import { useRoomName } from "../../../../hooks/useRoomName.ts";
 import { RightPanelPhases } from "../../../../stores/right-panel/RightPanelStorePhases.ts";
 import { useMatrixClientContext } from "../../../../contexts/MatrixClientContext.tsx";
-import { useRoomMemberCount, useRoomMembers } from "../../../../hooks/useRoomMembers.ts";
+// import { useRoomMemberCount, useRoomMembers } from "../../../../hooks/useRoomMembers.ts";
 import { _t } from "../../../../languageHandler.tsx";
 import { Flex } from "../../../../../packages/shared-components/src/utils/Flex";
 import { Box } from "../../../../../packages/shared-components/src/utils/Box";
@@ -34,10 +34,10 @@ import SdkConfig from "../../../../SdkConfig.ts";
 import { useFeatureEnabled } from "../../../../hooks/useSettings.ts";
 import { useEncryptionStatus } from "../../../../hooks/useEncryptionStatus.ts";
 import { E2EStatus } from "../../../../utils/ShieldUtils.ts";
-import FacePile from "../../elements/FacePile.tsx";
+// import FacePile from "../../elements/FacePile.tsx";
 import { useRoomState } from "../../../../hooks/useRoomState.ts";
 import RoomAvatar from "../../avatars/RoomAvatar.tsx";
-import { formatCount } from "../../../../utils/FormattingUtils.ts";
+// import { formatCount } from "../../../../utils/FormattingUtils.ts";
 import RightPanelStore from "../../../../stores/right-panel/RightPanelStore.ts";
 // import PosthogTrackers from "../../../../PosthogTrackers.ts";
 import { VideoRoomChatButton } from "./VideoRoomChatButton.tsx";
@@ -45,7 +45,7 @@ import { RoomKnocksBar } from "../RoomKnocksBar.tsx";
 import { isVideoRoom as calcIsVideoRoom } from "../../../../utils/video-rooms.ts";
 import { notificationLevelToIndicator } from "../../../../utils/notifications.ts";
 import { CallGuestLinkButton } from "./CallGuestLinkButton.tsx";
-import { type ButtonEvent } from "../../elements/AccessibleButton.tsx";
+// import { type ButtonEvent } from "../../elements/AccessibleButton.tsx";
 import WithPresenceIndicator, { useDmMember } from "../../avatars/WithPresenceIndicator.tsx";
 import { type IOOBData } from "../../../../stores/ThreepidInviteStore.ts";
 import { MainSplitContentType } from "../../../structures/RoomView.tsx";
@@ -75,8 +75,8 @@ export default function RoomHeader({
     // const roomName = useRoomName(room);
     const joinRule = useRoomState(room, (state) => state.getJoinRule());
 
-    const members = useRoomMembers(room, 2500);
-    const memberCount = useRoomMemberCount(room, { throttleWait: 2500, includeInvited: true });
+    // const members = useRoomMembers(room, 2500);
+    // const memberCount = useRoomMemberCount(room, { throttleWait: 2500, includeInvited: true });
 
     const {
         voiceCallDisabledReason,
@@ -397,7 +397,7 @@ export default function RoomHeader({
                         </IconButton>
                     </Tooltip> */}
 
-                    {!isDirectMessage && (
+                    {/* {!isDirectMessage && (
                         <BodyText as="div" size="sm" weight="medium">
                             <FacePile
                                 className="mx_RoomHeader_members"
@@ -415,7 +415,7 @@ export default function RoomHeader({
                                 {formatCount(memberCount)}
                             </FacePile>
                         </BodyText>
-                    )}
+                    )} */}
                 </Flex>
                 {askToJoinEnabled && <RoomKnocksBar room={room} />}
             </CurrentRightPanelPhaseContextProvider>
