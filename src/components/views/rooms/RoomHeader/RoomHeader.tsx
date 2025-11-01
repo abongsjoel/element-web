@@ -23,6 +23,7 @@ import { type ViewRoomOpts } from "@matrix-org/react-sdk-module-api/lib/lifecycl
 // import { useRoomName } from "../../../../hooks/useRoomName.ts";
 import { RightPanelPhases } from "../../../../stores/right-panel/RightPanelStorePhases.ts";
 import { useMatrixClientContext } from "../../../../contexts/MatrixClientContext.tsx";
+import { useRoomMembers } from "../../../../hooks/useRoomMembers.ts";
 // import { useRoomMemberCount, useRoomMembers } from "../../../../hooks/useRoomMembers.ts";
 import { _t } from "../../../../languageHandler.tsx";
 import { Flex } from "../../../../../packages/shared-components/src/utils/Flex";
@@ -69,14 +70,19 @@ export default function RoomHeader({
 
     // Get current user information - available for use throughout the component
     const currentUserId = client.getUserId();
-    const currentUser = currentUserId ? client.getUser(currentUserId) : null;
-    const username = currentUser?.displayName || currentUser?.rawDisplayName;
+    // const currentUser = currentUserId ? client.getUser(currentUserId) : null;
+    // const username = currentUser?.displayName || currentUser?.rawDisplayName;
+
+    // const isRoomCreator = room.getCreator() === currentUserId;
 
     // const roomName = useRoomName(room);
     const joinRule = useRoomState(room, (state) => state.getJoinRule());
 
-    // const members = useRoomMembers(room, 2500);
+    const members = useRoomMembers(room, 2500);
     // const memberCount = useRoomMemberCount(room, { throttleWait: 2500, includeInvited: true });
+
+    const correspondent = members.find((m) => m.userId !== currentUserId);
+    const correspondentName = correspondent?.name || correspondent?.rawDisplayName;
 
     const {
         voiceCallDisabledReason,
@@ -265,7 +271,7 @@ export default function RoomHeader({
                             room={room}
                             size="40px"
                             oobData={oobData}
-                            username={username}
+                            username={correspondentName}
                             // onClick={onAvatarClick}
                             tabIndex={-1}
                             aria-label={_t("room|header_avatar_open_settings_label")}
@@ -287,7 +293,7 @@ export default function RoomHeader({
                                 aria-level={1}
                                 className="mx_RoomHeader_heading"
                             >
-                                <span className="mx_RoomHeader_truncated mx_lineClamp">{username}</span>
+                                <span className="mx_RoomHeader_truncated mx_lineClamp">{correspondentName}</span>
 
                                 {!isDirectMessage && joinRule === JoinRule.Public && (
                                     <Tooltip label={_t("common|public_room")} placement="right">
