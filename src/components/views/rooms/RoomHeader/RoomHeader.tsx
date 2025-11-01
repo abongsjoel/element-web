@@ -12,7 +12,7 @@ import VideoCallIcon from "@vector-im/compound-design-tokens/assets/web/icons/vi
 import VoiceCallIcon from "@vector-im/compound-design-tokens/assets/web/icons/voice-call-solid";
 import CloseCallIcon from "@vector-im/compound-design-tokens/assets/web/icons/close";
 // import ThreadsIcon from "@vector-im/compound-design-tokens/assets/web/icons/threads-solid";
-import RoomInfoIcon from "@vector-im/compound-design-tokens/assets/web/icons/info-solid";
+// import RoomInfoIcon from "@vector-im/compound-design-tokens/assets/web/icons/info-solid";
 import NotificationsIcon from "@vector-im/compound-design-tokens/assets/web/icons/notifications-solid";
 import VerifiedIcon from "@vector-im/compound-design-tokens/assets/web/icons/verified";
 import ErrorIcon from "@vector-im/compound-design-tokens/assets/web/icons/error-solid";
@@ -385,7 +385,7 @@ export default function RoomHeader({
                         </Tooltip>
                     )}
 
-                    <Tooltip label={_t("right_panel|room_summary_card|title")}>
+                    {/* <Tooltip label={_t("right_panel|room_summary_card|title")}>
                         <IconButton
                             onClick={(evt) => {
                                 evt.stopPropagation();
@@ -395,7 +395,7 @@ export default function RoomHeader({
                         >
                             <ToggleableIcon Icon={RoomInfoIcon} phase={RightPanelPhases.RoomSummary} />
                         </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
 
                     {!isDirectMessage && (
                         <BodyText as="div" size="sm" weight="medium">
