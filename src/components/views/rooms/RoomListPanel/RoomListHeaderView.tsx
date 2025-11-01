@@ -22,8 +22,8 @@ import {
     type RoomListHeaderViewState,
     useRoomListHeaderViewModel,
 } from "../../../viewmodels/roomlist/RoomListHeaderViewModel";
-import { RoomListOptionsMenu } from "./RoomListOptionsMenu";
-import { ReleaseAnnouncement } from "../../../structures/ReleaseAnnouncement";
+// import { RoomListOptionsMenu } from "./RoomListOptionsMenu";
+// import { ReleaseAnnouncement } from "../../../structures/ReleaseAnnouncement";
 
 /**
  * The header view for the room list
@@ -46,7 +46,7 @@ export function RoomListHeaderView(): JSX.Element {
                 {vm.displaySpaceMenu && <SpaceMenu vm={vm} />}
             </Flex>
             <Flex align="center" gap="var(--cpd-space-2x)">
-                <ReleaseAnnouncement
+                {/* <ReleaseAnnouncement
                     feature="newRoomList_sort"
                     header={_t("room_list|release_announcement|sort|title")}
                     description={_t("room_list|release_announcement|sort|description")}
@@ -56,10 +56,10 @@ export function RoomListHeaderView(): JSX.Element {
                     <div className="mx_RoomListHeaderView_ReleaseAnnouncementAnchor">
                         <RoomListOptionsMenu vm={vm} />
                     </div>
-                </ReleaseAnnouncement>
+                </ReleaseAnnouncement> */}
 
                 {/* If we don't display the compose menu, it means that the user can only send DM */}
-                <ReleaseAnnouncement
+                {/* <ReleaseAnnouncement
                     feature="newRoomList_intro"
                     header={_t("room_list|release_announcement|intro|title")}
                     description={_t("room_list|release_announcement|intro|description")}
@@ -77,7 +77,7 @@ export function RoomListHeaderView(): JSX.Element {
                             </IconButton>
                         )}
                     </div>
-                </ReleaseAnnouncement>
+                </ReleaseAnnouncement> */}
             </Flex>
         </Flex>
     );
