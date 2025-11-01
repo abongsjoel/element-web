@@ -6,15 +6,15 @@
  */
 import React, { type JSX, useState } from "react";
 import { IconButton, Menu, MenuItem } from "@vector-im/compound-web";
-import ComposeIcon from "@vector-im/compound-design-tokens/assets/web/icons/compose";
+// import ComposeIcon from "@vector-im/compound-design-tokens/assets/web/icons/compose";
 import UserAddIcon from "@vector-im/compound-design-tokens/assets/web/icons/user-add";
 import ChevronDownIcon from "@vector-im/compound-design-tokens/assets/web/icons/chevron-down";
-import RoomIcon from "@vector-im/compound-design-tokens/assets/web/icons/room";
+// import RoomIcon from "@vector-im/compound-design-tokens/assets/web/icons/room";
 import HomeIcon from "@vector-im/compound-design-tokens/assets/web/icons/home";
 import PreferencesIcon from "@vector-im/compound-design-tokens/assets/web/icons/preferences";
 import SettingsIcon from "@vector-im/compound-design-tokens/assets/web/icons/settings";
-import VideoCallIcon from "@vector-im/compound-design-tokens/assets/web/icons/video-call";
-import ChatIcon from "@vector-im/compound-design-tokens/assets/web/icons/chat";
+// import VideoCallIcon from "@vector-im/compound-design-tokens/assets/web/icons/video-call";
+// import ChatIcon from "@vector-im/compound-design-tokens/assets/web/icons/chat";
 
 import { _t } from "../../../../languageHandler";
 import { Flex } from "../../../../../packages/shared-components/src/utils/Flex";
@@ -141,45 +141,45 @@ function SpaceMenu({ vm }: SpaceMenuProps): JSX.Element {
     );
 }
 
-interface ComposeMenuProps {
-    /**
-     * The view model for the room list header
-     */
-    vm: RoomListHeaderViewState;
-}
+// interface ComposeMenuProps {
+//     /**
+//      * The view model for the room list header
+//      */
+//     vm: RoomListHeaderViewState;
+// }
 
 /**
  * The compose menu for the room list header
  */
-function ComposeMenu({ vm }: ComposeMenuProps): JSX.Element {
-    const [open, setOpen] = useState(false);
+// function ComposeMenu({ vm }: ComposeMenuProps): JSX.Element {
+//     const [open, setOpen] = useState(false);
 
-    return (
-        <Menu
-            open={open}
-            onOpenChange={setOpen}
-            showTitle={false}
-            title={_t("action|open_menu")}
-            side="right"
-            align="start"
-            trigger={
-                <IconButton aria-label={_t("action|add")}>
-                    <ComposeIcon color="var(--cpd-color-icon-secondary)" />
-                </IconButton>
-            }
-        >
-            <MenuItem Icon={ChatIcon} label={_t("action|start_chat")} onSelect={vm.createChatRoom} hideChevron={true} />
-            {vm.canCreateRoom && (
-                <MenuItem Icon={RoomIcon} label={_t("action|new_room")} onSelect={vm.createRoom} hideChevron={true} />
-            )}
-            {vm.canCreateVideoRoom && (
-                <MenuItem
-                    Icon={VideoCallIcon}
-                    label={_t("action|new_video_room")}
-                    onSelect={vm.createVideoRoom}
-                    hideChevron={true}
-                />
-            )}
-        </Menu>
-    );
-}
+//     return (
+//         <Menu
+//             open={open}
+//             onOpenChange={setOpen}
+//             showTitle={false}
+//             title={_t("action|open_menu")}
+//             side="right"
+//             align="start"
+//             trigger={
+//                 <IconButton aria-label={_t("action|add")}>
+//                     <ComposeIcon color="var(--cpd-color-icon-secondary)" />
+//                 </IconButton>
+//             }
+//         >
+//             <MenuItem Icon={ChatIcon} label={_t("action|start_chat")} onSelect={vm.createChatRoom} hideChevron={true} />
+//             {vm.canCreateRoom && (
+//                 <MenuItem Icon={RoomIcon} label={_t("action|new_room")} onSelect={vm.createRoom} hideChevron={true} />
+//             )}
+//             {vm.canCreateVideoRoom && (
+//                 <MenuItem
+//                     Icon={VideoCallIcon}
+//                     label={_t("action|new_video_room")}
+//                     onSelect={vm.createVideoRoom}
+//                     hideChevron={true}
+//                 />
+//             )}
+//         </Menu>
+//     );
+// }
