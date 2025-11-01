@@ -70,8 +70,6 @@ export default function RoomHeader({
 
     // Get current user information - available for use throughout the component
     const currentUserId = client.getUserId();
-    // const currentUser = currentUserId ? client.getUser(currentUserId) : null;
-    // const username = currentUser?.displayName || currentUser?.rawDisplayName;
 
     // const isRoomCreator = room.getCreator() === currentUserId;
 
